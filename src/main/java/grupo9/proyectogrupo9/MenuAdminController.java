@@ -81,7 +81,11 @@ public class MenuAdminController implements Initializable {
         Input5.setVisible(true);
         VboxEdicion.setVisible(true);
         
-        TablaDatos = new TableView<Cliente>();
+        
+        TablaDatos.getItems().clear();
+        TablaDatos.getColumns().clear();
+        TablaDatos.setEditable(true);
+        TablaDatos.setVisible(true);
         
         TableColumn columnCodigo = new TableColumn<Cliente, String>("Cédula");
         columnCodigo.setCellValueFactory(new PropertyValueFactory<Cliente, String>("codigo"));
@@ -154,7 +158,10 @@ public class MenuAdminController implements Initializable {
         Input5.setVisible(false);
         VboxEdicion.setVisible(true);
         
-        TablaDatos = new TableView<Proveedor>();
+        TablaDatos.getItems().clear();
+        TablaDatos.getColumns().clear();
+        TablaDatos.setEditable(true);
+        TablaDatos.setVisible(true);
         
         TableColumn columnCodigo = new TableColumn<Proveedor, String>("Cédula");
         columnCodigo.setCellValueFactory(new PropertyValueFactory<Proveedor, String>("codigo"));
@@ -219,8 +226,10 @@ public class MenuAdminController implements Initializable {
         Texto5.setVisible(false);
         Input5.setVisible(false);
         VboxEdicion.setVisible(true);
-        TablaDatos = new TableView<Servicio>();
-        
+        TablaDatos.getItems().clear();
+        TablaDatos.getColumns().clear();
+        TablaDatos.setEditable(true);
+        TablaDatos.setVisible(true);
         
         TableColumn columnCodigo = new TableColumn<Servicio, String>("Codigo");
         columnCodigo.setCellValueFactory(new PropertyValueFactory<Servicio, String>("codigo"));
@@ -230,13 +239,7 @@ public class MenuAdminController implements Initializable {
         TableColumn columnNombre= new TableColumn<Servicio, String>("Nombre");
         columnNombre.setCellValueFactory(new PropertyValueFactory<Servicio, String>("nombre"));
         columnNombre.setCellFactory(TextFieldTableCell.forTableColumn());
-        columnNombre.setOnEditCommit(new EventHandler<CellEditEvent<Servicio, String>>(){
-            @Override
-            public void handle(CellEditEvent<Servicio, String> event){
-                Servicio cliente = event.getRowValue();
-                cliente.setNombre(event.getNewValue());
-            }
-        });
+        
         
         TableColumn columnPrecio= new TableColumn<Servicio, Double>("Precio");
         columnPrecio.setCellValueFactory(new PropertyValueFactory<Servicio, Double>("precio"));
@@ -284,8 +287,41 @@ public class MenuAdminController implements Initializable {
             String n= Input2.getText();
             Double p= Double.valueOf(Input3.getText());
             App.getDataBase().agregarServicio(new Servicio(c,n,p));
-            administrarCliente();
+            administrarServicios();
         }
+        Input1.clear();
+        Input2.clear();
+        Input3.clear();
+        Input4.clear();
+        Input5.clear();
+    }
+    @FXML
+    private void editar(){
+        if(Texto4.isVisible()&&Texto5.isVisible()){
+            App.getDataBase().accederClientes().clear();
+            for (Object o: TablaDatos.getItems()){
+                Cliente c= (Cliente) o;
+                App.getDataBase().agregarCliente(c);
+            }
+        }else if(Texto4.isVisible()&& !Texto5.isVisible()){
+            App.getDataBase().accederProveedores().clear();
+            for (Object o: TablaDatos.getItems()){
+                Proveedor p=(Proveedor) o;
+                App.getDataBase().agregarProveedor(p);
+            }
+        }else{
+            App.getDataBase().accederServicios().clear();
+            for (Object o: TablaDatos.getItems()){
+                Servicio s=(Servicio) o;
+                App.getDataBase().agregarServicio(s);
+            }
+        }
+    }
+    @FXML
+    private void delete(){
+        int row=TablaDatos.getSelectionModel().getSelectedIndex();
+        if(row>=0)
+            TablaDatos.getItems().remove(row);
     }
     
 }
