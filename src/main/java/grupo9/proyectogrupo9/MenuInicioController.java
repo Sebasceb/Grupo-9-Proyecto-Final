@@ -45,6 +45,10 @@ public class MenuInicioController {
         alert.showAndWait();
     }
     
+    @FXML
+    private void jugarMemoria() throws IOException {
+        App.setRoot("JuegoMemoria");
+    }
     
     
     

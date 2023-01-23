@@ -32,8 +32,12 @@ public class JuegoMemoriaController implements Initializable{
     int columnas= 6;
     int filas= 4;
     
+    @FXML
+    private void regresarInicio() throws IOException {
+        App.setRoot("MenuInicio");
+    }
     
-    
+    @Override
     public void initialize(URL url, ResourceBundle rb){
         codigos=new ArrayList();
         posiciones=new ArrayList();
@@ -42,8 +46,9 @@ public class JuegoMemoriaController implements Initializable{
         bandera=true;
       
         System.out.println("Hello World");
+        llenarGridPane();/*
         Runnable task2 = () -> { llenarGridPane(); };
-        new Thread(task2).start();
+        new Thread(task2).start();*/
         
     }
    

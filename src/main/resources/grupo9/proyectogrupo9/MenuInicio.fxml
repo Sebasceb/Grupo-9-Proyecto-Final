@@ -20,6 +20,7 @@
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Clave" />
       <TextField fx:id="clave" />
       <Button onAction="#comprobarUsuario" text="Iniciar sesión" />
+      <Button mnemonicParsing="false" onAction="#jugarMemoria" text="Juego de Memoria" />
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
