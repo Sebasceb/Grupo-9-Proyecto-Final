@@ -11,12 +11,16 @@ import java.util.Scanner;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.util.converter.DoubleStringConverter;
 
 /**
@@ -28,6 +32,31 @@ public class MenuAdminController implements Initializable {
     
     @FXML
     private BorderPane contenedorPrincipal;
+    @FXML
+    private TableView TablaDatos;
+    @FXML
+    private VBox VboxEdicion;
+    @FXML
+    private Text Texto1;
+    @FXML
+    private Text Texto2;
+    @FXML
+    private Text Texto3;
+    @FXML
+    private Text Texto4;
+    @FXML
+    private Text Texto5;
+    @FXML
+    private TextField Input1;
+    @FXML
+    private TextField Input2;
+    @FXML
+    private TextField Input3;
+    @FXML
+    private TextField Input4;
+    @FXML
+    private TextField Input5;
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -40,8 +69,19 @@ public class MenuAdminController implements Initializable {
 
 
     public void administrarCliente() {
-        TableView table = new TableView<Cliente>();
-        table.setEditable(true);
+        
+        Texto1.setText("Cédula");
+        Texto2.setText("Nombre");
+        Texto3.setText("Dirección");
+        Texto4.setVisible(true);
+        Texto4.setText("Teléfono");
+        Input4.setVisible(true);
+        Texto5.setVisible(true);
+        Texto5.setText("Tipo");
+        Input5.setVisible(true);
+        VboxEdicion.setVisible(true);
+        
+        TablaDatos = new TableView<Cliente>();
         
         TableColumn columnCodigo = new TableColumn<Cliente, String>("Cédula");
         columnCodigo.setCellValueFactory(new PropertyValueFactory<Cliente, String>("codigo"));
@@ -92,20 +132,29 @@ public class MenuAdminController implements Initializable {
             }   
         });
         
-        table.getColumns().addAll(columnCodigo,columnNombre,columnDireccion,columnTelefono,columnTipo);
-        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        TablaDatos.getColumns().addAll(columnCodigo,columnNombre,columnDireccion,columnTelefono,columnTipo);
+        TablaDatos.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         
         for(Cliente c: App.getDataBase().listaClientes){
-            table.getItems().add(c);
+            TablaDatos.getItems().add(c);
         }
         
-        contenedorPrincipal.setCenter(table);
+        contenedorPrincipal.setCenter(TablaDatos);
         
     }
 
     public void administrarProveedor() {
-        TableView table = new TableView<Cliente>();
-        table.setEditable(true);
+        Texto1.setText("Cédula");
+        Texto2.setText("Nombre");
+        Texto3.setText("Dirección");
+        Texto4.setVisible(true);
+        Input4.setVisible(true);
+        Texto4.setText("Teléfono");
+        Texto5.setVisible(false);
+        Input5.setVisible(false);
+        VboxEdicion.setVisible(true);
+        
+        TablaDatos = new TableView<Proveedor>();
         
         TableColumn columnCodigo = new TableColumn<Proveedor, String>("Cédula");
         columnCodigo.setCellValueFactory(new PropertyValueFactory<Proveedor, String>("codigo"));
@@ -150,20 +199,28 @@ public class MenuAdminController implements Initializable {
         
         
         
-        table.getColumns().addAll(columnCodigo,columnNombre,columnDireccion,columnTelefono);
-        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        TablaDatos.getColumns().addAll(columnCodigo,columnNombre,columnDireccion,columnTelefono);
+        TablaDatos.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         
         for(Proveedor p: App.getDataBase().listaProveedores){
-            table.getItems().add(p);
+            TablaDatos.getItems().add(p);
         }
         
-        contenedorPrincipal.setCenter(table);
+        contenedorPrincipal.setCenter(TablaDatos);
 
     }
 
     public void administrarServicios() {
-        TableView table = new TableView<Cliente>();
-        table.setEditable(true);
+        Texto1.setText("Código");
+        Texto2.setText("Nombre");
+        Texto3.setText("Precio");
+        Texto4.setVisible(false);
+        Input4.setVisible(false);
+        Texto5.setVisible(false);
+        Input5.setVisible(false);
+        VboxEdicion.setVisible(true);
+        TablaDatos = new TableView<Servicio>();
+        
         
         TableColumn columnCodigo = new TableColumn<Servicio, String>("Codigo");
         columnCodigo.setCellValueFactory(new PropertyValueFactory<Servicio, String>("codigo"));
@@ -196,14 +253,39 @@ public class MenuAdminController implements Initializable {
         
         
         
-        table.getColumns().addAll(columnCodigo,columnNombre,columnPrecio);
-        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        TablaDatos.getColumns().addAll(columnCodigo,columnNombre,columnPrecio);
+        TablaDatos.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         
         for(Servicio s: App.getDataBase().listaServicios){
-            table.getItems().add(s);
+            TablaDatos.getItems().add(s);
         }
         
-        contenedorPrincipal.setCenter(table);
+        contenedorPrincipal.setCenter(TablaDatos);
+    }
+    @FXML
+    private void agregar(){
+        if(Texto4.isVisible()&&Texto5.isVisible()){
+            String c= Input1.getText();
+            String n= Input2.getText();
+            String d= Input3.getText();
+            String tele= Input4.getText();
+            TipoCliente tipo= TipoCliente.valueOf(Input5.getText());
+            App.getDataBase().agregarCliente(new Cliente(c,n,d,tele,tipo));
+            administrarCliente();
+        }else if(Texto4.isVisible()&& !Texto5.isVisible()){
+            String c= Input1.getText();
+            String n= Input2.getText();
+            String d= Input3.getText();
+            String tele= Input4.getText();
+            App.getDataBase().agregarProveedor(new Proveedor(c,n,d,tele));
+            administrarProveedor();
+        }else{
+            String c= Input1.getText();
+            String n= Input2.getText();
+            Double p= Double.valueOf(Input3.getText());
+            App.getDataBase().agregarServicio(new Servicio(c,n,p));
+            administrarCliente();
+        }
     }
     
 }
