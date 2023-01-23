@@ -50,7 +50,7 @@ public class MenuInicioController {
     }
   
     public String comprobarUsuario(){
-        try(BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\agome\\Documents\\NetBeansProjects\\Grupo-9-Proyecto-Final\\Usuarios.txt"))){
+        try(BufferedReader br = new BufferedReader(new FileReader("Grupo-9-Proyecto-Final/src/main/resources/grupo9/proyectogrupo9/"))){
             String line;
             while((line = br.readLine()) != null){
                 String[] datos = line.split(",");
