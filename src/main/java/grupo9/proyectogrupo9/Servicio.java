@@ -14,10 +14,14 @@ public class Servicio {
     private double precio;
     private int cantidad;
 
-    public Servicio(String ccodigo, String nombre, float precio){
+    public Servicio(String codigo, String nombre, double precio){
       this.codigo=codigo;
       this.nombre=nombre;
       this.precio=precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 
     public double getPrecio() {
@@ -35,6 +39,14 @@ public class Servicio {
 
     public String getCodigo() {
         return codigo;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
     
     

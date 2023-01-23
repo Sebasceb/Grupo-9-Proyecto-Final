@@ -6,11 +6,11 @@ import java.util.ArrayList;
 
 public class DataBase {
 
-    public ArrayList<Cliente> listaClientes = new ArrayList<>();
-    public ArrayList<Proveedor> listaProveedores = new ArrayList<>();;
-    public ArrayList<Servicio> listaServicios = new ArrayList<>();;
-    public ArrayList<Usuario> listaUsuarios = new ArrayList<>();;
-    public ArrayList<Orden> listaOrdenes = new ArrayList<>();;
+    public static ArrayList<Cliente> listaClientes = new ArrayList<>();
+    public static ArrayList<Proveedor> listaProveedores = new ArrayList<>();;
+    public static ArrayList<Servicio> listaServicios = new ArrayList<>();;
+    public static ArrayList<Usuario> listaUsuarios = new ArrayList<>();;
+    public static ArrayList<Orden> listaOrdenes = new ArrayList<>();;
 
     public void agregarCliente(Cliente c) {
         listaClientes.add(c);
@@ -52,7 +52,7 @@ public class DataBase {
         return listaOrdenes;
     }
 
-    public void init() {
+    public static void init() {
 
         //se crean los objetos correspondientes
         //Usuarios
@@ -67,10 +67,35 @@ public class DataBase {
         listaUsuarios.add(u3);
         listaUsuarios.add(u4);
         //Clientes
+        
+        Cliente c0 = new Cliente("1234", "Nombre0", "Direccion0", "Telefono0", TipoCliente.Empresarial);
+        Cliente c1 = new Cliente("4321", "Nombre1", "Direccion1", "Telefono1", TipoCliente.Personal);
+        Cliente c2 = new Cliente("5678", "Nombre2", "Direccion2", "Telefono2", TipoCliente.Empresarial);
+        Cliente c3 = new Cliente("8765", "Nombre3", "Direccion3", "Telefono3", TipoCliente.Personal);
+        listaClientes.add(c0);
+        listaClientes.add(c1);
+        listaClientes.add(c2);
+        listaClientes.add(c3);
 
         //Servicios
+        Servicio s0=new Servicio("1234","Nombre0",1234);
+        Servicio s1=new Servicio("1234","Nombre1",1234);
+        Servicio s2=new Servicio("1234","Nombre2",1234);
+        Servicio s3=new Servicio("1234","Nombre3",1234);
+        listaServicios.add(s0);
+        listaServicios.add(s1);
+        listaServicios.add(s2);
+        listaServicios.add(s3);
 
         //Proveedores
+        Proveedor p0=new Proveedor("1234","Nombre0","Direccion0","1234");
+        Proveedor p1=new Proveedor("1234","Nombre1","Direccion1","1234");
+        Proveedor p2=new Proveedor("1234","Nombre2","Direccion2","1234");
+        Proveedor p3=new Proveedor("1234","Nombre3","Direccion3","1234");
+        listaProveedores.add(p0);
+        listaProveedores.add(p1);
+        listaProveedores.add(p2);
+        listaProveedores.add(p3);
 
         //Ordenes
 

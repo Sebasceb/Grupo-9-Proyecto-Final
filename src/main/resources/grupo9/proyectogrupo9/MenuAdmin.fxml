@@ -3,12 +3,9 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 
 <BorderPane fx:id="contenedorPrincipal" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="grupo9.proyectogrupo9.MenuAdminController">
    <top>
@@ -24,17 +21,17 @@
    <left>
       <VBox BorderPane.alignment="CENTER">
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Administrar Clientes">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#administrarCliente" prefHeight="25.0" prefWidth="150.0" text="Administrar Clientes">
                <VBox.margin>
                   <Insets left="10.0" top="150.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Administrar Proveedores">
+            <Button mnemonicParsing="false" onAction="#administrarProveedor" prefHeight="25.0" prefWidth="150.0" text="Administrar Proveedores">
                <VBox.margin>
                   <Insets left="10.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Administrar Servicios">
+            <Button mnemonicParsing="false" onAction="#administrarServicios" prefHeight="25.0" prefWidth="150.0" text="Administrar Servicios">
                <VBox.margin>
                   <Insets left="10.0" top="10.0" />
                </VBox.margin>
@@ -49,11 +46,4 @@
          </BorderPane.margin>
       </Button>
    </bottom>
-   <center>
-      <TitledPane animated="false" text="text" BorderPane.alignment="CENTER">
-         <content>
-            <FlowPane prefHeight="200.0" prefWidth="200.0" />
-         </content>
-      </TitledPane>
-   </center>
 </BorderPane>
