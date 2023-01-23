@@ -54,14 +54,11 @@ public class MenuInicioController {
             String line;
             while((line = br.readLine()) != null){
                 String[] datos = line.split(",");
-                if(!usuario.getText().equals(datos[0]) || !datos[1].equals(clave.getText())){
-                    mostrarAlerta(Alert.AlertType.INFORMATION, "Los datos ingresados son incorrectos. Por favor, verifique y vuelva a ingresar ");
-                    
-                    
-                } else {
+                if(usuario.getText().equals(datos[0]) && datos[1].equals(clave.getText())){
                     String tipo = datos[3];
                     return "Menu"+tipo.toUpperCase().charAt(0)+tipo.substring(1,tipo.length()).toLowerCase();
-                }   
+                    
+                } 
             }
             
         } catch(IOException err){
