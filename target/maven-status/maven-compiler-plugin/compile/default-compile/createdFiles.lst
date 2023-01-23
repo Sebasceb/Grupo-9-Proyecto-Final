@@ -4,6 +4,7 @@ grupo9\proyectogrupo9\EnumConverter.class
 grupo9\proyectogrupo9\MenuAdminController$6.class
 grupo9\proyectogrupo9\MenuInicioController.class
 grupo9\proyectogrupo9\DataBase.class
+grupo9\proyectogrupo9\JuegoMemoriaController$1.class
 grupo9\proyectogrupo9\Orden.class
 grupo9\proyectogrupo9\Sistema.class
 grupo9\proyectogrupo9\MenuAdminController$3.class
@@ -11,13 +12,13 @@ grupo9\proyectogrupo9\TipoVehiculo.class
 module-info.class
 grupo9\proyectogrupo9\MenuAdminController$8.class
 grupo9\proyectogrupo9\Servicio.class
+grupo9\proyectogrupo9\Estado.class
 grupo9\proyectogrupo9\MenuTecnicoController.class
 grupo9\proyectogrupo9\TipoCliente.class
 grupo9\proyectogrupo9\MenuAdminController$5.class
 grupo9\proyectogrupo9\OrdenServicios.class
 grupo9\proyectogrupo9\JuegoMemoriaController.class
 grupo9\proyectogrupo9\Usuario.class
-grupo9\proyectogrupo9\MenuAdminController$9.class
 grupo9\proyectogrupo9\MenuAdminController.class
 grupo9\proyectogrupo9\App.class
 grupo9\proyectogrupo9\TipoUsuario.class
@@ -25,4 +26,5 @@ grupo9\proyectogrupo9\MenuAdminController$4.class
 grupo9\proyectogrupo9\SecondaryController.class
 grupo9\proyectogrupo9\Proveedor.class
 grupo9\proyectogrupo9\MenuAdminController$2.class
+grupo9\proyectogrupo9\JuegoMemoriaController$Tarjetas.class
 grupo9\proyectogrupo9\MenuAdminController$7.class
